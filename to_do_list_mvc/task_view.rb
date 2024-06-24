@@ -3,7 +3,11 @@ class TaskView
   def display_tasks(tasks)
     tasks.each_with_index do |task, index|
       status = task.completed ? "[X]" : "[ ]"
-        puts "Task n°#{index + 1} #{status} |For #{task.name} => #{task.description}|"
+      puts "┌──────────────────────────────────────────────┐"
+      puts "│ Task n°#{index + 1} #{status}                 "
+      puts "│ For: #{task.name}                             "
+      puts "│ Description: #{task.description}              "
+      puts "└──────────────────────────────────────────────┘"
     end
   end
 
@@ -31,33 +35,45 @@ class TaskView
 
   # Start Methods for displaying messages to the user
   def message_empty_list
-    puts "There is no tasks in your list !"
+    puts "┌───────────────────────────────────────┐"
+    puts "│ 📭 There is no tasks in your list!    |"
+    puts "└───────────────────────────────────────┘"
   end
 
   def message_added_with_success
-    puts "Your task has been added to your list !"
+    puts "┌────────────────────────────────────────────┐"
+    puts "│ 🎉 Your task has been added successfully!  |"
+    puts "└────────────────────────────────────────────┘"
   end
 
   def message_deleted_with_success
-    puts "You just removed your task from the list !"
+    puts "┌──────────────────────────────────────────────┐"
+    puts "│ 🗑️  Your task has been removed successfully!  |"
+    puts "└──────────────────────────────────────────────┘"
   end
 
   def message_marked_with_success
-    puts "Task marked as completed."
+    puts "┌───────────────────────────────────────┐"
+    puts "│ ✅ Task marked as completed!          |"
+    puts "└───────────────────────────────────────┘"
   end
 
   def message_updated_tasks(new_name, new_description)
+    puts "┌────────────────────────────────────────────────────────────┐"
     if new_name.empty? && new_description.empty?
-      puts "There is no update on the task!"
+      puts "│ ❌  There is no update on the task!                    "
     elsif !new_name.empty? && !new_description.empty?
-      puts "Both the name and the description have been updated"
+      puts "│ ✏️  Both the name and the description have been updated!  "
     else
-      puts "#{new_name.empty? ? "Only the description" : "Only the name"} has been updated"
+      puts "│ ✏️  #{new_name.empty? ? "Only the description" : "Only the name"} has been updated!  "
     end
+    puts "└────────────────────────────────────────────────────────────┘"
   end
 
   def error_message
-    puts "An error occured, please try again !"
+    puts "┌──────────────────────────────────────────┐"
+    puts "│ ⚠️  An error occurred, please try again!  │"
+    puts "└──────────────────────────────────────────┘"
   end
   # End Methods for displaying messages to the user
 end
